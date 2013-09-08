@@ -1,4 +1,4 @@
 realtime-todo
 =============
 
-realtime todo-list
+Realtime todo list

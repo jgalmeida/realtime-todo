@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <link rel="stylesheet" href="css/alertify.js-shim-0.3.8/themes/alertify.bootstrap.css">
+    <link rel="stylesheet" href="css/alertify.js-shim-0.3.8/themes/alertify.core.css">
+    <link rel="stylesheet" href="css/alertify.js-shim-0.3.8/themes/alertify.default.css">
+    <link rel="stylesheet" href="css/todo.css">
+  </head>
+  <body>
+    <div class="container">
+      <section class="todo">
+<!--         <ul class="todo-controls">
+          <li><a href="javascript:void(0);" class="icon-add">Add</a></li>
+          <li><a href="javascript:void(0);" class="icon-delete">Delete</a></li>
+          <li class="right"><a href="javascript:void(0);" class="icon-settings">Settings</a></li>
+        </ul> -->
+
+        <ul class="todo-list">
+          <% if @messages.any? %>
+            <% @messages.each do |msg| %>
+              <li id='<%= msg.id %>'>
+                <input type='checkbox' id='build'/>
+                <label class='toggle' for='build'></label>
+                <span> <%= msg.message %> </span>
+                <a href='#' class='icon-delete'>Delete</a>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <ul class="todo-controls">
+          <li>
+            <input type="text" class="rounded" id="newTodo" placeholder="Add new todo"/>
+          </li>
+        </ul>
+
+<!--         <ul class="todo-pagination">
+          <li class="previous"><span><i class="icon-previous"></i> Previous</span></li>
+          <li class="next"><a href="javascript:void(0);">Next <i class="icon-next"></i></a></li>
+        </ul> -->
+      </section>
+    </div>
+  </body>
+
+  <script type='text/x-tmpl' id='todo-tmpl'>
+    <li id='{%= o.id %}'>
+      <input type='checkbox' id='build'/>
+      <label class='toggle' for='build'></label>
+      <span> {%= o.message %} </span>
+      <a href='#' class='icon-delete'>Delete</a>
+    </li>
+  </script>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="js/tmpl.min.js"></script>
+  <script src="js/todo.js"></script>
+  <script src="js/alertify.js-shim-0.3.8/alertify.js"></script>
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</html>
